@@ -1,22 +1,20 @@
-# Loop 1 to find first number
-while True:
-    # Try to get the first number
-    try:
-        number = int(input('Give me a number: '))
-        break
-    # If the input is not a number, ask again
-    except ValueError:
-        print("Give me number!")
+symbols = ['+']
 
-# Loop 2 to find second number
-while True:
-    # Try to get the second number
+def checkNum(number):
     try:
-        number2 = int(input('Give me another number: '))
-        break
-    # If the input is not a number, ask again
+        return int(number)
     except ValueError:
-        print("Give me number!")
+        if number not in symbols:
+            raise ValueError
+        return number
 
-# Multiply the two number
-print(number * number2)
+calculation = input('Calculation: ').split(' ')
+
+for i in calculation:
+    i = checkNum(i)
+    if type(i) != int:
+        if i == '+':
+            index = calculation.index(i)
+            number1 = int(calculation[index - 1])
+            number2 = int(calculation[index + 1])
+            print(number1 + number2)
