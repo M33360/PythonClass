@@ -1,4 +1,4 @@
-symbols = ['+']
+symbols = [ -x-
 
 def checkNum(number):
     try:
